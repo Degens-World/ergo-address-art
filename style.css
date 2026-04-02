@@ -1,0 +1,243 @@
+:root {
+  --bg: #0a0b0f;
+  --panel: #12141c;
+  --border: #1e2235;
+  --accent: #ff6b35;
+  --accent2: #7c3aed;
+  --accent3: #10b981;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --sigma: #ff6b35;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.sigma {
+  color: var(--sigma);
+  font-size: 2.6rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.input-row input {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  font-family: 'Courier New', monospace;
+  transition: border-color 0.2s;
+}
+
+.input-row input:focus {
+  border-color: var(--accent);
+}
+
+.input-row input::placeholder { color: var(--muted); }
+
+button {
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+button:hover { opacity: 0.85; }
+button:active { transform: scale(0.97); }
+button:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+
+.main-area {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.canvas-wrap {
+  position: relative;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#artCanvas {
+  display: block;
+  width: 540px;
+  height: 540px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,11,15,0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.overlay.hidden { display: none; }
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.stats-panel {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stats-panel h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.stats-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+
+.stat-row:last-child { border-bottom: none; }
+
+.stat-label { color: var(--muted); }
+.stat-value { font-weight: 700; font-family: 'Courier New', monospace; }
+
+.stat-value.positive { color: var(--accent3); }
+.stat-value.highlight { color: var(--accent); }
+
+.palette-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+#downloadBtn { background: var(--accent3); }
+#randomBtn { background: var(--accent2); }
+
+.legend {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.legend h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.legend ul {
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.legend ul li::before {
+  content: '▸ ';
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 800px) {
+  .main-area { flex-direction: column; align-items: center; }
+  #artCanvas { width: 100%; height: auto; }
+  .canvas-wrap { width: 100%; }
+}

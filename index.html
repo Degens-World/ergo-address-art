@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ergo Address Art</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="sigma">Σ</span> Ergo Address Art</h1>
+      <p class="subtitle">Turn your wallet address into a unique on-chain masterpiece</p>
+    </header>
+
+    <div class="input-row">
+      <input
+        id="addressInput"
+        type="text"
+        placeholder="Enter an Ergo wallet address (9...)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="generateBtn">Generate</button>
+    </div>
+
+    <div class="main-area">
+      <div class="canvas-wrap">
+        <canvas id="artCanvas" width="540" height="540"></canvas>
+        <div id="loadingOverlay" class="overlay hidden">
+          <div class="spinner"></div>
+          <span>Fetching on-chain data…</span>
+        </div>
+      </div>
+
+      <div class="stats-panel">
+        <h2>On-chain Profile</h2>
+        <div id="statsContent" class="stats-empty">
+          <p>Generate art to see wallet stats</p>
+        </div>
+
+        <div class="palette-row" id="paletteRow"></div>
+
+        <div class="actions">
+          <button id="downloadBtn" disabled>Download PNG</button>
+          <button id="randomBtn">Try Random</button>
+        </div>
+
+        <div class="legend">
+          <h3>How it works</h3>
+          <ul>
+            <li>Address chars seed the visual pattern</li>
+            <li>Balance shapes the color palette</li>
+            <li>TX count controls layer depth</li>
+            <li>Each address = unique artwork</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Built on Ergo blockchain · Data via <a href="https://api.ergoplatform.com" target="_blank">Ergo Explorer API</a></p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
